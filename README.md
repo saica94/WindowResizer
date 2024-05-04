@@ -22,7 +22,28 @@
 ``` PowerShell
 winget install --id Microsoft.DotNet.SDK.8
 ```
+### If unable to execute
+Please check the current execution policy of PowerShell, and if it is set to Restricted, AllSigned, or RemoteSigned, change it to Unrestricted. When you are not using this program, remember to revert to the original execution policy.  
 
+* Check the current execution policy:  
+``` PowerShell
+Get-ExecutionPolicy
+```
+* Change the execution policy:
+``` PowerShell
+Set-ExecutionPolicy Unrestricted -Focus CurrentUser -Force
+```
+* Revert to the original policy:
+``` PowerShell
+Set-ExecutionPolicy <Policy Level> -Focus CurrentUser -Force
+```
+※Policy Level  
+| Policy Level | Local | Remote|
+|--------------|-------|-------|
+| Restricted | × | × |
+| AllSigned | 〇(Signed only) | 〇(Signed only) |
+| RemoteSigned | 〇 | 〇(Signed only)|
+| Unrestricted | 〇 | 〇 |
 # Usage
 * [JP]ドロップダウンリストから変更したいウィンドウのタイトルを選択した後、WidthとHeightのスライダーを操作してウィンドウサイズを変更するか、入力ボックスに直接数値を入力してウィンドウサイズを変更してください。  
 * [EN]After selecting the window title you want to change from the dropdown list, you can change the window size by manipulating the Width and Height sliders or by directly entering values into the input boxes.  
